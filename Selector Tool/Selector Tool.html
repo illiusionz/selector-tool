@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Selector List</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato|Anton|Roboto|Inconsolata" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+	<div class="mainBackground"></div>
+	<div class="header">
+		<div class="undertoneLogo"><img src="undertoneLogo.png" class="images vertAlign"/></div>
+		<!--<div class="buttonGroup">
+			<button class="js-copy-button copy-button">Copy JS</button>
+		  <button class="css-copy-button copy-button">Copy CSS</button>
+			<button class="preload-copy-button copy-button">Copy Preload List</button>
+		</div>-->
+	</div>
+	
+  <div class="container">
+	  <!-- Start Box -->
+	  <div class="lineCounter">
+		  <ul class="line-list">				  					  			  
+			</ul>
+    </div>
+    
+	  <textarea class="startTextArea column" placeholder="Insert Image List"></textarea>
+	  
+	  <!-- JS Selector Box Results -->
+	  <div class="jsResults column">
+		  <label class="list-labels">JS Selectors</label>
+		  <div class="leftdivider"></div>
+		  <span id="jsResults"></span>
+		</div>
+		
+	  <!-- CSS Selector Box Results -->
+	  <div class="cssResults column">
+		  <label class="list-labels">CSS Selectors</label>
+			<div class="leftdivider"></div>
+		  <span id="cssResults"></span>
+	  </div>
+	  
+		<div class="preloadResults column">
+			<label class="list-labels">Preload List</label>
+			<div class="leftdivider"></div>
+		  <span id="preloadResults"></span>
+		</div>
+
+  </div><!--/ container -->
+  
+	<div class="footer">
+		<div class="selecterType">
+			<label><input type="radio" name="selecterType" value="ids" id="idChoice" checked>ID's</label>
+			<label><input type="radio" name="selecterType" value="classes">Classes</label>
+		</div>
+		<div class="buttonGroup">
+			<button class="copy-button convert-button">Convert</button>
+			<button class="js-copy-button copy-button">Copy JS</button>
+		  <button class="css-copy-button copy-button">Copy CSS</button>
+			<button class="preload-copy-button copy-button">Copy Preload List</button>
+		</div>
+	</div>  
+  </body>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+
+</html>
+
+

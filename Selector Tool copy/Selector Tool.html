@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Selector List</title>
+</head>
+<body>
+	<link href="https://fonts.googleapis.com/css?family=Lato|Anton|Roboto|Inconsolata" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <style>
+@import url('https://fonts.googleapis.com/css?family=Anton|Inconsolata|Lato|Roboto');
+ * {
+     font-family: 'Inconsolata', monospace;
+     font-size: 13px;
+}
+ body {
+     margin: 0;
+}
+ .images {
+     width:100%;
+     height:auto;
+}
+ .vertAlign {
+     position: absolute;
+     top:0;
+     bottom:0;
+     margin: auto;
+}
+ .expandedCreative {
+     position: absolute;
+     width: 100%;
+     height: 100%;
+     top: 0;
+     left: 0;
+}
+ .mainBackground {
+     position: absolute;
+     background: url('mainBackground.jpg') center center repeat;
+     background-size: 1200px;
+     width: 100%;
+     height: 100%;
+     top: 0;
+     left: 0;
+     z-index: -1;
+}
+ h1 {
+     color: #ff8a13;
+     text-transform: uppercase;
+     font-size: 40px;
+     letter-spacing: 2px;
+     text-align: center;
+     font-family: 'Anton', sans-serif;
+     text-shadow: 1px 1px 7px rgba(0, 0, 0, 0.4);
+}
+ .container {
+     display: block;
+     position: fixed;
+     color: #fff;
+     width: 100%;
+     height: 100%;
+     top: 109px;
+     margin: auto;
+     bottom: 0;
+}
+ .column {
+     margin: 0px 0px;
+}
+ textarea {
+     color:#000;
+}
+ .startTextArea {
+     position: absolute;
+     width: 16.3%;
+     top: 0;
+     background: #1d1f20;
+     margin-right: 0px;
+     height: 100%;
+     border: none;
+     color: #fff;
+     padding-left: 30px;
+}
+ .jsResults, .cssResults, .preloadResults {
+     position: absolute;
+     top:0;
+     left: 0;
+     width: 25%;
+     color: #dcdada;
+     background: #1d1f20;
+     height: 100%;
+     padding-left:10px;
+}
+ .jsResults {
+     left: 18%;
+     width:32%;
+}
+ .cssResults {
+     left:50.3%;
+}
+ .preloadResults {
+     left:75.6%;
+}
+ .header {
+     position: fixed;
+     top: 0;
+     width: 100%;
+     height: 50px;
+     background: #000;
+     border-bottom: 4px solid #343436;
+     box-shadow: 0 1px 1px black;
+}
+ .jsColumn {
+     left: 18%;
+     width: 32%;
+}
+ .cssColumn {
+     left: 50.3%;
+     width: 25%;
+}
+ .footer {
+     position:absolute;
+     width:100%;
+     bottom:0;
+     height:55px;
+     background:#000;
+     border-top: 4px solid #343436;
+     box-shadow: 0 1px 1px black;
+     z-index: 9999;
+}
+ .buttonGroup {
+     display: flex;
+     flex-direction: row;
+     height: 55%;
+     position: absolute;
+     top: 0;
+     right: 1%;
+     bottom: 0;
+     margin: auto;
+}
+
+ button{
+     font-family: 'Lato', sans-serif;
+     letter-spacing: 0.5px;
+     /*font-weight: 600;*/
+}
+
+ button:hover {
+     background-color: #81bc41;
+     color:#fff;
+     text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.6);
+     border-color: #000;
+}
+
+ .copy-button {
+     margin: 0 10px;
+     background: #4d4d504a;
+     border-radius: 3px;
+     color: #fff;
+     border-color: #ffffff1f;
+     padding: 15px 20px;
+     line-height: 0px;
+}
+
+ .undertoneLogo {
+     position: absolute;
+     top: 0;
+     left: 2%;
+     width: 1.5%;
+     height: 100%;
+     min-width: 25px;
+}
+ .divider {
+     position: absolute;
+     right: 0;
+     top: 0;
+     width: 5px;
+     height: 100%;
+     z-index: 100;
+     background: #696969;
+     background:#343436;
+}
+ .leftdivider {
+     position: absolute;
+     left: 0;
+     top: 0;
+     width: 5px;
+     height: 100%;
+     z-index: 100;
+     background: #696969;
+     background:#343436;
+}
+ .list-labels {
+     position: absolute;
+     top: -25px;
+     color: #ccc;
+     font-family: 'Lato', sans-serif;
+     text-transform: uppercase;
+     font-weight: bold;
+     background: #343436;
+     padding: 4px 15px;
+     left: 0px;
+     border-radius: 10px 10px 0 0;
+     font-size: 12px;
+}
+ .selecterType {
+     color: #fff;
+     position: absolute;
+     width: 14%;
+     top: 0;
+     bottom: 0;
+     margin: auto;
+     left: 1%;
+     height: 30%;
+}
+ .selecterType label {
+     font-family: 'Lato', sans-serif;
+     text-transform: uppercase;
+}
+ .selecterType label:hover{
+     color:#80bd40;
+}
+ ::-webkit-input-placeholder {
+     font-style: italic;
+     font-size: 11px;
+     font-family: 'Lato', sans-serif;
+     text-transform: uppercase;
+     color:#7b7c7d;
+}
+ :-moz-placeholder {
+     font-style: italic;
+}
+ ::-moz-placeholder {
+     font-style: italic;
+}
+ :-ms-input-placeholder {
+     font-style: italic;
+}
+ .lineCounter {
+     position: absolute;
+     width: 9%;
+     height: 100%;
+     z-index: 9000;
+     -ms-user-select: none;
+     -moz-user-select: none;
+     -webkit-user-select: none;
+     user-select: none;
+     pointer-events: none;
+}
+ .line-list {
+     list-style: none;
+     padding: 0;
+     margin: 0;
+     padding: 2px 8px 0;
+     width: 6%;
+     border-right: 1px solid #ffffff36;
+}
+ .line-list li {
+     color:#80bd40;
+}
+
+</style>
+	
+	
+	<div class="mainBackground"></div>
+	<div class="header">
+		<div class="undertoneLogo"><img src="undertoneLogo.png" class="images vertAlign"/></div>
+		<!--<div class="buttonGroup">
+			<button class="js-copy-button copy-button">Copy JS</button>
+		  <button class="css-copy-button copy-button">Copy CSS</button>
+			<button class="preload-copy-button copy-button">Copy Preload List</button>
+		</div>-->
+	</div>
+	
+
+	
+  <div class="container">
+	  
+	  
+	  <!-- Start Box -->
+	  <div class="lineCounter">
+		  <ul class="line-list">				  					  			  
+			</ul>
+	  </div>
+	  <textarea class="startTextArea column" placeholder="Insert Image List"></textarea>
+	  
+	  <!-- JS Selector Box Results -->
+	  <div class="jsResults column">
+		  <label class="list-labels">JS Selectors</label>
+		  <div class="leftdivider"></div>
+		  <!--<div class="divider"></div>-->
+		  <span id="jsResults"></span>
+		</div>
+		
+	  <!-- CSS Selector Box Results -->
+	  <div class="cssResults column">
+		  <label class="list-labels">CSS Selectors</label>
+			<div class="leftdivider"></div>
+		 <!-- <div class="divider"></div>-->
+		  <span id="cssResults"></span>
+	  </div>
+	  
+		<div class="preloadResults column">
+			<label class="list-labels">Preload List</label>
+			<div class="leftdivider"></div>
+		  <!--<div class="divider"></div>-->
+		  <span id="preloadResults"></span>
+		</div>
+
+  </div><!--/ container -->
+  
+	<div class="footer">
+		
+		
+		<div class="selecterType">
+			<label><input type="radio" name="selecterType" value="ids" id="idChoice" checked>ID's</label>
+			<label><input type="radio" name="selecterType" value="classes">Classes</label>
+		</div>
+		
+		
+		<div class="buttonGroup">
+			<button class="copy-button convert-button">Convert</button>
+			<button class="js-copy-button copy-button">Copy JS</button>
+		  <button class="css-copy-button copy-button">Copy CSS</button>
+			<button class="preload-copy-button copy-button">Copy Preload List</button>
+		</div>
+	</div>  
+  
+  
+  <script>
+	  $(function(){
+		  
+		  
+				for (i = 0; i < 80; i++) {
+					
+					$('.line-list').append('<li>'+[i]+'</li>')
+				    //text += "The number is " + i + "<br>";
+				}				
+				
+				
+							
+					var colorCoded = true;		
+					var IdSelected = false;
+							
+				function convertArraysToResults(){					
+					  var fileNameArray = []; 
+					  var fullFileNameArray = [];    
+					  var nameList = $(".startTextArea").val();
+					  
+					  
+					
+						if($('#idChoice').is(':checked')){ 
+							console.log("Convert to IDS"); 
+							IdSelected = true;
+						}	else{
+							console.log("Convert to CLASSES"); 
+							IdSelected = false;
+						}							  
+	
+
+						
+						//Checks for extension and strips it. (.jpg, .png, etc)
+					  $.each(nameList.split(/\n/), function (i, name) {  
+							var fileName = name.replace(/\.[^/.]+$/, "");							
+							
+				      // empty string check
+				      if(name != ""){
+				         fileNameArray.push(fileName);
+				      }      
+						});
+						
+							//Create Array to make full file name list (includes 
+					  $.each(nameList.split(/\n/), function (i, name) {  
+							var fullFileName = name;							
+				        fullFileNameArray.push(' &nbsp; \''+fullFileName+'\'');
+				        
+						});
+
+						console.log('fileNameArray: '+fileNameArray);
+						console.log('fullFileNameArray: '+fullFileNameArray);
+						
+						//Creates Selector Statement in Array
+						let newJsArray = fileNameArray.map(function(fileName){
+							var prefix1 = ' = ';
+							var prefix2 = '$';
+							var prefix3 = '(';
+							var prefix4 = '"div[id^=\'';
+							var prefix4b = '\'.';
+							var prefix5 = '\']"';
+							var prefix5b = '\''; //use backslah to include single and double quotes
+							var prefix6 = ');';
+							
+
+							if(IdSelected){
+									var result = fileName + prefix1.fontcolor('#c3bc25') + prefix2.fontcolor('#b1778d') + prefix3 + 
+								  prefix4.fontcolor('#b4c978') + fileName.fontcolor('#b4c978') +prefix5.fontcolor('#b4c978') +prefix6+'</br>';
+							}else{
+									var result = fileName + prefix1.fontcolor('#c3bc25') + prefix2.fontcolor('#b1778d') + prefix3 + 
+								  prefix4b.fontcolor('#b4c978') + fileName.fontcolor('#b4c978') +prefix5b.fontcolor('#b4c978')+prefix6+'</br>';	
+							}
+							
+													  
+							return result; 
+														
+						});		
+						
+						let newCssArray = fileNameArray.map(function(fileName){
+							var prefix0 = 'div';
+							var prefix1 = '[';
+							var prefix2 = 'id^';
+							var prefix3 = '=';
+							var prefix4 = '],';
+							var prefix4b = '.';
+							var prefix4c = ',';	
+							
+							if(IdSelected){
+								var result = prefix0+prefix1 + prefix2.fontcolor('#80aac6') + prefix3 + fileName.fontcolor('#b4c978') + prefix4 +'</br>';
+							}else{
+								var result = prefix4b+fileName+prefix4c+'</br>';	
+							}						
+							
+							
+							return result;
+						});	
+						
+						
+					
+						//Convert it to a string and write out on HTML CSS Selectors
+						$('.cssResults span').html( newCssArray.join(' ').toString() );
+								
+						//Convert it to a string and write out on HTML JS Selectors
+						$('.jsResults span').html( newJsArray.join(' ').toString() );
+						
+						//Convert it to a string and write out on Preload list JS Selectors
+						$('.preloadResults span').html( 'ad.'+'preload'.fontcolor('#b1778d')+'('+'[<br>'.fontcolor('#c3bc25') +fullFileNameArray.join(', <br>').toString()+'<br>]'.fontcolor('#c3bc25')+');<br>' );	
+
+		
+													
+									
+			
+						
+	  		};
+	  		
+	  		
+	  		$('.convert-button').click(function(){
+		  		convertArraysToResults();
+	  		});
+	  		
+				$('.js-copy-button').click(function(){
+					copyDivToClipboard('jsResults');
+	  		});	
+	  		
+				$('.css-copy-button').click(function(){
+					copyDivToClipboard('cssResults');
+	  		});	
+	  		
+				$('.preload-copy-button').click(function(){
+					copyDivToClipboard('preloadResults');
+	  		});	  		
+	  		
+	  		
+	  			  		
+	      function copyDivToClipboard(divId) {
+            var range = document.getSelection().getRangeAt(0);
+            range.selectNode(document.getElementById(divId));
+            window.getSelection();
+            document.execCommand("copy")
+        }		
+	  		
+	  		
+	  });//end
+	  
+	  
+  </script>
+  </body>
+  
+</html>
+
+

@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css?family=Anton|Inconsolata|Lato|Roboto');
+ * {
+     font-family: 'Inconsolata', monospace;
+     font-size: 13px;
+}
+ body {
+     margin: 0;
+}
+ .images {
+     width:100%;
+     height:auto;
+}
+ .vertAlign {
+     position: absolute;
+     top:0;
+     bottom:0;
+     margin: auto;
+}
+ .expandedCreative {
+     position: absolute;
+     width: 100%;
+     height: 100%;
+     top: 0;
+     left: 0;
+}
+ .mainBackground {
+     position: absolute;
+     background: url('mainBackground.jpg') center center repeat;
+     background-size: 1200px;
+     width: 100%;
+     height: 100%;
+     top: 0;
+     left: 0;
+     z-index: -1;
+}
+ h1 {
+     color: #ff8a13;
+     text-transform: uppercase;
+     font-size: 40px;
+     letter-spacing: 2px;
+     text-align: center;
+     font-family: 'Anton', sans-serif;
+     text-shadow: 1px 1px 7px rgba(0, 0, 0, 0.4);
+}
+ .container {
+     display: block;
+     position: fixed;
+     color: #fff;
+     width: 100%;
+     height: 100%;
+     top: 101px;
+     margin: auto;
+     bottom: 0;
+}
+ .column {
+     margin: 0px 0px;
+}
+ textarea {
+     color:#000;
+}
+ .startTextArea {
+     position: absolute;
+     width: 16.3%;
+     top: 0;
+     background: #1d1f20;
+     margin-right: 0px;
+     height: 100%;
+     border: none;
+     color: #fff;
+     padding-left: 30px;
+}
+ .jsResults, .cssResults, .preloadResults {
+     position: absolute;
+     top:0;
+     left: 0;
+     width: 25.3%;
+     color: #dcdada;
+     background: #1d1f20;
+     height: 100%;
+     padding-left:10px;
+}
+ .jsResults {
+     left: 18%;
+     width:32.3%;
+}
+ .cssResults {
+     left:50.3%;
+}
+ .preloadResults {
+     left:75.6%;
+}
+ .header {
+     position: fixed;
+     top: 0;
+     width: 100%;
+     height: 50px;
+     background: #000;
+     border-bottom: 4px solid #343436;
+     box-shadow: 0 1px 1px black;
+}
+ .jsColumn {
+     left: 18%;
+     width: 32%;
+}
+ .cssColumn {
+     left: 50.3%;
+     width: 25%;
+}
+ .footer {
+     position:absolute;
+     width:100%;
+     bottom:0;
+     height:55px;
+     background:#000;
+     border-top: 4px solid #343436;
+     box-shadow: 0 1px 1px black;
+     z-index: 9999;
+}
+ .buttonGroup {
+     display: flex;
+     flex-direction: row;
+     height: 55%;
+     position: absolute;
+     top: 0;
+     right: 1%;
+     bottom: 0;
+     margin: auto;
+}
+ .copy-button {
+     margin: 0 10px;
+     background: rgba(77, 77, 80, 0.2901960784313726);
+     border-radius: 3px;
+     color: #fff;
+     border-color: rgba(255, 255, 255, 0.12156862745098039);
+     padding: 15px 20px;
+     line-height: 0px;
+}
+ button{
+     font-family: 'Lato', sans-serif;
+     letter-spacing: 0.5px;
+     /*font-weight: 600;*/
+}
+ button:hover {
+     background-color: #81bc41;
+     color:#fff;
+     text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.6);
+}
+ .undertoneLogo {
+     position: absolute;
+     top: 0;
+     left: 2%;
+     width: 1.3%;
+     height: 100%;
+     min-width: 25px;
+}
+ .divider {
+     position: absolute;
+     right: 0;
+     top: 0;
+     width: 5px;
+     height: 100%;
+     z-index: 100;
+     background: #696969;
+     background:#343436;
+}
+ .leftdivider {
+     position: absolute;
+     left: 0;
+     top: 0;
+     width: 5px;
+     height: 100%;
+     z-index: 100;
+     background: #696969;
+     background:#343436;
+}
+ .list-labels {
+     position: absolute;
+     top: -25px;
+     color: #ccc;
+     font-family: 'Lato', sans-serif;
+     text-transform: uppercase;
+     font-weight: bold;
+     background: #343436;
+     padding: 4px 15px;
+     left: 0px;
+     border-radius: 10px 10px 0 0;
+     font-size: 12px;
+}
+ .selecterType {
+     color: #fff;
+     position: absolute;
+     width: 14%;
+     top: 0;
+     bottom: 0;
+     margin: auto;
+     left: 1%;
+     height: 30%;
+}
+ .selecterType label {
+     font-family: 'Lato', sans-serif;
+     text-transform: uppercase;
+}
+ .selecterType label:hover{
+     color:#80bd40;
+}
+ ::-webkit-input-placeholder {
+     font-style: italic;
+     font-size: 11px;
+     font-family: 'Lato', sans-serif;
+     text-transform: uppercase;
+     color:#7b7c7d;
+}
+ :-moz-placeholder {
+     font-style: italic;
+}
+ ::-moz-placeholder {
+     font-style: italic;
+}
+ :-ms-input-placeholder {
+     font-style: italic;
+}
+ .lineCounter {
+     position: absolute;
+     width: 9%;
+     height: 100%;
+     z-index: 9000;
+     -ms-user-select: none;
+     -moz-user-select: none;
+     -webkit-user-select: none;
+     user-select: none;
+     pointer-events: none;
+}
+ .line-list {
+     list-style: none;
+     padding: 0;
+     margin: 0;
+     padding: 2px 8px 0;
+     width: 6%;
+     border-right: 1px solid rgba(255, 255, 255, 0.43);
+}
+ .line-list li {
+     color:#80bd40;
+}

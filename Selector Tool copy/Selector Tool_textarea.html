@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Selector List</title>
+</head>
+<body>
+  <h1>Create Selector List</h1>
+	<link href="https://fonts.googleapis.com/css?family=Lato|Anton|Roboto|Inconsolata" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <style>
+	  @import url('https://fonts.googleapis.com/css?family=Anton|Inconsolata|Lato|Roboto');
+ 
+ 
+* {
+	font-family: 'Inconsolata', monospace;			
+	font-size: 12px;
+}
+
+.expandedCreative  {
+ 	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+.mainBackground {
+	position: absolute;
+	background: url('mainBackground.jpg') center center repeat;
+	background-size: 1200px;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
+h1 {
+  color: #ff8a13;
+  text-transform: uppercase;
+  font-size: 40px;
+  letter-spacing: 2px;
+  text-align: center;
+  font-family: 'Anton', sans-serif;
+  text-shadow: 1px 1px 7px rgba(0, 0, 0, 0.4);
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  color: #fff;
+  width: 100%;
+  height: 85%;
+  top: 0;
+  margin: auto;
+  bottom: 0;
+}
+
+.column {
+  margin: 0px 5px;
+}
+
+
+textarea {
+  color:#000;
+  font-family: 'Lato', sans-serif;
+}
+
+.startTextArea {
+  position: relative;
+  width:25%;
+	min-height: 600px;
+  background:#fff;
+  margin-right: 0px;
+}
+
+.jsResults {
+ 	position: relative;
+  width:35%;
+  min-height:600px;
+  border:1px solid #000;
+  padding: 2px 5px;
+  color:#dcdada;
+  background:#292929;
+}
+
+.cssResults {
+	position: relative;
+  width:35%;
+  min-height:600px;
+  border:1px solid #000;
+  padding: 2px 5px;
+  color:#dcdada;
+  background:#292929;	  
+}
+	  
+	  
+	</style>
+	
+	
+	<div class="mainBackground"></div>
+  <div class="container">
+	  <textarea class="startTextArea column"></textarea>	
+	  <button>Convert</button>
+		  <textarea class="jsResults column"></textarea> <button class="js-copy-button">Copy JS</button>	    
+		  <div class="cssResults column"><span></span><button class="css-copy-button">Copy CSS</button></div>
+  </div><!-- /container-->
+  
+  
+  
+  <script>
+	  $(function(){
+		  				
+							
+				function textToArray(){					
+					  var fileNameArray = [];    
+					  var nameList = $(".startTextArea").val();
+						
+						//Checks for extension .jpg, .png, etc
+					  $.each(nameList.split(/\n/), function (i, name) {  
+							var fileName = name.replace(/\.[^/.]+$/, "");
+				      // empty string check
+				      if(name != ""){
+				         fileNameArray.push(fileName);
+				      }      
+						});
+						
+						console.log(fileNameArray);
+						
+						//Creates Selector Statement in Array
+						let newJsArray = fileNameArray.map(function(fileName){
+							
+							var prefix1 = ' = ';
+							var prefix2 = '$';
+							var prefix3 = `(`;
+							var prefix4 = `"div[id^='`;
+							var prefix5 = `']"`;
+							var prefix6 = `);`
+							
+							var result =fileName+' = $("div[id^='+ fileName+']");&#013;&#010';
+							return result; 
+														
+						});		
+						
+						let newCssArray = fileNameArray.map(function(fileName){
+							var prefix0 = 'ad';
+							var prefix1 = '[';
+							var prefix2 = 'id^';
+							var prefix3 = '=';
+							var prefix4 = '],';
+							var result = prefix0+prefix1 + prefix2.fontcolor('#80aac6') + prefix3 + fileName.fontcolor('#b4c978') + prefix4 +`</br>`;
+							return result;
+						});				
+						
+						//Convert it to a string and write out on HTML CSS Selectors
+						$('.cssResults span').html( newCssArray.join(' ').toString() );
+								
+						//Convert it to a string and write out on HTML JS Selectors
+						var jsResults = newJsArray.join(' ').toString();
+						
+						$('.jsResults').html( jsResults );
+						
+	  		};
+	  		
+	  		
+	  		$('button').click(function(){
+		  		textToArray();
+	  		});
+		
+	$('.js-copy-button').click(function(){
+			$('.jsResults').select();
+		  /* Copy the text inside the text field */
+		  document.execCommand("Copy");
+	});
+      		
+	  		
+	  		
+	  		
+	  });//end
+	  
+	  
+  </script>
+  </body>
+  
+</html>
+
+

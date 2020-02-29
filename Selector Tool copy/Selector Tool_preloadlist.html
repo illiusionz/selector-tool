@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Selector List</title>
+</head>
+<body>
+  <h1>Create Selector List</h1>
+	<link href="https://fonts.googleapis.com/css?family=Lato|Anton|Roboto|Inconsolata" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <style>
+	  @import url('https://fonts.googleapis.com/css?family=Anton|Inconsolata|Lato|Roboto');
+ 
+ 
+* {
+	font-family: 'Inconsolata', monospace;			
+	font-size: 12px;
+}
+
+.expandedCreative  {
+ 	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+.mainBackground {
+	position: absolute;
+	background: url('mainBackground.jpg') center center repeat;
+	background-size: 1200px;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
+h1 {
+  color: #ff8a13;
+  text-transform: uppercase;
+  font-size: 40px;
+  letter-spacing: 2px;
+  text-align: center;
+  font-family: 'Anton', sans-serif;
+  text-shadow: 1px 1px 7px rgba(0, 0, 0, 0.4);
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  color: #fff;
+  width: 100%;
+  height: 85%;
+  top: 0;
+  margin: auto;
+  bottom: 0;
+}
+
+.column {
+  margin: 0px 5px;
+}
+
+
+textarea {
+  color:#000;
+  font-family: 'Lato', sans-serif;
+}
+
+.startTextArea {
+  position: relative;
+  width:25%;
+	min-height: 400px;
+  background:#fff;
+  margin-right: 0px;
+}
+
+.jsResults {
+ 	position: relative;
+  width:35%;
+  min-height:400px;
+  border:1px solid #000;
+  padding: 2px 5px;
+  color:#dcdada;
+  background:#292929;
+  height: 100%;
+}
+
+.cssResults {
+	position: relative;
+  width:35%;
+  min-height:400px;
+  border:1px solid #000;
+  padding: 2px 5px;
+  color:#dcdada;
+  background:#292929;	
+  height: 100%;
+}
+	  
+	  
+	</style>
+	
+	
+	<div class="mainBackground"></div>
+  <div class="container">
+	  <textarea class="startTextArea column"></textarea>	
+	  <button class="convert-button">Convert</button>
+	  <div id="jsResults" class="jsResults column"></div><button class="js-copy-button">Copy JS</button>	  	    
+	  <div id="cssResults" class="cssResults column"></div><button class="css-copy-button">Copy CSS</button>
+		<div id="preloadResults" class="preloadResults column"></div><button class="preload-copy-button">Copy Preload List</button>
+
+  </div>
+  
+  
+  
+  <script>
+	  $(function(){
+							
+				function textToArray(){					
+					  var fileNameArray = []; 
+					  var fullFileNameArray = [];    
+					  var nameList = $(".startTextArea").val();
+						
+						//Checks for extension and strips it. (.jpg, .png, etc)
+					  $.each(nameList.split(/\n/), function (i, name) {  
+							var fileName = name.replace(/\.[^/.]+$/, "");							
+							
+				      // empty string check
+				      if(name != ""){
+				         fileNameArray.push(fileName);
+				      }      
+						});
+						
+							//Create Array to make full file name list (includes 
+					  $.each(nameList.split(/\n/), function (i, name) {  
+							var fullFileName = name;							
+				        fullFileNameArray.push(`  '`+fullFileName+`'`);
+				        
+						});
+										
+										
+											
+					
+						/*let newPreloadArray = fullFileNameArray.map(function(fileName){
+								var prefix0 = 'ad';
+								var prefix1 = 'preload';
+								var prefix2 = '(';
+								var prefix3 = '[';
+								var prefix4 = '],';
+								var prefix5 = ');';
+								var result = prefix0+prefix1.fontcolor('#b1778d') + prefix2 + prefix3.fontcolor('#c3bc25') + fileName.fontcolor('#b4c978') + prefix4.fontcolor('#b4c978') +prefix5+`</br>`;
+								return result;
+								consol.log('newPreloadArray'+fileName);
+							});	
+							
+							console.log(fileName);
+						});*/
+						
+					
+						
+						
+						
+						console.log('fileNameArray: '+fileNameArray);
+						console.log('fullFileNameArray: '+fullFileNameArray);
+						
+						//Creates Selector Statement in Array
+						let newJsArray = fileNameArray.map(function(fileName){
+							
+							var prefix1 = ' = ';
+							var prefix2 = '$';
+							var prefix3 = `(`;
+							var prefix4 = `"div[id^='`;
+							var prefix5 = `']"`;
+							var prefix6 = `);`
+							
+							var result = fileName + prefix1.fontcolor('#c3bc25') + prefix2.fontcolor('#b1778d') + prefix3 + 
+													  prefix4.fontcolor('#b4c978') + fileName.fontcolor('#b4c978') +prefix5.fontcolor('#b4c978') +prefix6+`</br>`;
+													  
+							//var result = fileName+' = $("div[id^='+ fileName+']");'+'<br>';
+
+							return result; 
+														
+						});		
+						
+						let newCssArray = fileNameArray.map(function(fileName){
+							var prefix0 = 'div';
+							var prefix1 = '[';
+							var prefix2 = 'id^';
+							var prefix3 = '=';
+							var prefix4 = '],';
+							var result = prefix0+prefix1 + prefix2.fontcolor('#80aac6') + prefix3 + fileName.fontcolor('#b4c978') + prefix4 +`</br>`;
+							return result;
+						});	
+						
+						
+						
+													
+						
+						//Convert it to a string and write out on HTML CSS Selectors
+						$('.cssResults').html( newCssArray.join(' ').toString() );
+								
+						//Convert it to a string and write out on HTML JS Selectors
+						$('.jsResults').html( newJsArray.join(' ').toString() );
+						
+						//Convert it to a string and write out on Preload list JS Selectors
+						$('.preloadResults').html( 'ad.preload([<br>'+fullFileNameArray.join(', <br>').toString()+`<br>]);<br>` );
+												
+						//Make array - preloadResultsgets sparkflow ad prolaod string into araay
+						
+			
+						
+	  		};
+	  		
+	  		
+	  		$('button').click(function(){
+		  		textToArray();
+	  		});
+	  		
+				$('.js-copy-button').click(function(){
+					copyDivToClipboard('jsResults');
+	  		});	
+	  		
+				$('.css-copy-button').click(function(){
+					copyDivToClipboard('cssResults');
+	  		});	
+	  		
+					$('.preload-copy-button').click(function(){
+					copyDivToClipboard('preloadResults');
+	  		});	  		
+	  		
+	  		
+	  			  		
+	      function copyDivToClipboard(divId) {
+            var range = document.getSelection().getRangeAt(0);
+            range.selectNode(document.getElementById(divId));
+            window.getSelection();
+            document.execCommand("copy")
+        }		
+	  		
+	  		
+	  });//end
+	  
+	  
+  </script>
+  </body>
+  
+</html>
+
+
